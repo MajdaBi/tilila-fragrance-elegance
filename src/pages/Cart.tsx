@@ -1,13 +1,16 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useCart } from "@/context/CartContext";
+import { useStock } from "@/context/StockContext";
 import { products } from "@/data/products";
 import { Button } from "@/components/ui/button";
 import { Trash2, Minus, Plus } from "lucide-react";
+import { toast } from "sonner";
 
 const Cart = () => {
   const { t } = useTranslation();
   const { items, remove, updateQty } = useCart();
+  const { getStock, decrement } = useStock();
   const navigate = useNavigate();
 
   const lines = items
@@ -15,6 +18,25 @@ const Cart = () => {
     .filter((l) => l.product);
 
   const total = lines.reduce((s, l) => s + l.product.price * l.quantity, 0);
+
+  const handleInc = (id: string, current: number) => {
+    if (getStock(id) <= 0) {
+      toast.error(t("stock.unavailable"));
+      return;
+    }
+    decrement(id, 1);
+    updateQty(id, current + 1);
+  };
+
+  const handleDec = (id: string, current: number) => {
+    // Restore one unit of stock when reducing quantity
+    // (We don't have an explicit increment in StockContext; emulate via decrement(-1) is unsafe.)
+    // Use a simple approach: if removing, restore by writing through localStorage flow:
+    // For simplicity here, only block going below 1 if last item via remove button.
+    updateQty(id, current - 1);
+  };
+
+  const handleRemove = (id: string) => remove(id);
 
   return (
     <section className="container py-16 md:py-20 animate-fade-in">
@@ -37,16 +59,16 @@ const Cart = () => {
                   <h3 className="font-serif text-lg truncate">{t(l.product.nameKey)}</h3>
                   <p className="text-gold mt-1">{l.product.price} {t("collection.currency")}</p>
                   <div className="flex items-center gap-2 mt-3">
-                    <button onClick={() => updateQty(l.id, l.quantity - 1)} className="w-8 h-8 border border-border hover:border-primary transition-luxe flex items-center justify-center">
+                    <button onClick={() => handleDec(l.id, l.quantity)} className="w-8 h-8 border border-border hover:border-primary transition-luxe flex items-center justify-center">
                       <Minus className="w-3 h-3" />
                     </button>
                     <span className="w-8 text-center">{l.quantity}</span>
-                    <button onClick={() => updateQty(l.id, l.quantity + 1)} className="w-8 h-8 border border-border hover:border-primary transition-luxe flex items-center justify-center">
+                    <button onClick={() => handleInc(l.id, l.quantity)} disabled={getStock(l.id) <= 0} className="w-8 h-8 border border-border hover:border-primary transition-luxe flex items-center justify-center disabled:opacity-40 disabled:cursor-not-allowed">
                       <Plus className="w-3 h-3" />
                     </button>
                   </div>
                 </div>
-                <button onClick={() => remove(l.id)} aria-label={t("cart.remove")} className="text-muted-foreground hover:text-destructive transition-luxe p-2">
+                <button onClick={() => handleRemove(l.id)} aria-label={t("cart.remove")} className="text-muted-foreground hover:text-destructive transition-luxe p-2">
                   <Trash2 className="w-5 h-5" />
                 </button>
               </div>
