@@ -6,6 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import "./i18n";
 import { AuthProvider } from "./context/AuthContext";
 import { CartProvider } from "./context/CartContext";
+import { StockProvider } from "./context/StockContext";
 import Layout from "./components/Layout";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Index from "./pages/Index.tsx";
@@ -25,6 +26,7 @@ const App = () => (
       <Toaster />
       <Sonner position="top-center" />
       <AuthProvider>
+        <StockProvider>
         <CartProvider>
           <BrowserRouter>
             <Routes>
@@ -41,6 +43,7 @@ const App = () => (
             </Routes>
           </BrowserRouter>
         </CartProvider>
+        </StockProvider>
       </AuthProvider>
     </TooltipProvider>
   </QueryClientProvider>
