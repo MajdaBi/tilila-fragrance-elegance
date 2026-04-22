@@ -16,7 +16,7 @@ const StockBadge = ({ qty, showQty = false, className }: Props) => {
     status === "in"
       ? "bg-primary/10 text-primary border-primary/30"
       : status === "low"
-      ? "bg-amber-500/10 text-amber-400 border-amber-500/30"
+      ? "bg-primary/5 text-primary/80 border-primary/20"
       : "bg-destructive/10 text-destructive border-destructive/30";
 
   const label =
@@ -30,7 +30,7 @@ const StockBadge = ({ qty, showQty = false, className }: Props) => {
         className,
       )}
     >
-      <span className={cn("w-1.5 h-1.5 rounded-full", status === "in" ? "bg-primary" : status === "low" ? "bg-amber-400" : "bg-destructive")} />
+      <span className={cn("w-1.5 h-1.5 rounded-full animate-pulse", status === "in" ? "bg-primary" : status === "low" ? "bg-primary/60" : "bg-destructive")} />
       {label}
       {showQty && status !== "out" && (
         <span className="opacity-80 normal-case tracking-normal">· {qty} {t("stock.left")}</span>
