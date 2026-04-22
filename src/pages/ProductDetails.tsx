@@ -1,6 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { products } from "@/data/products";
+import { useProducts } from "@/context/ProductsContext";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/context/CartContext";
 import { useStock, stockStatus } from "@/context/StockContext";
@@ -13,6 +13,7 @@ const ProductDetails = () => {
   const { t } = useTranslation();
   const { add } = useCart();
   const { getStock, decrement } = useStock();
+  const { products } = useProducts();
   const product = products.find((p) => p.id === id);
 
   if (!product) {

@@ -14,7 +14,7 @@ import {
 
 const Navbar = () => {
   const { t, i18n } = useTranslation();
-  const { user, logout } = useAuth();
+  const { user, isAdmin, logout } = useAuth();
   const { count } = useCart();
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
@@ -46,6 +46,8 @@ const Navbar = () => {
           </NavLink>
           {user ? (
             <>
+              <NavLink to="/orders" className={linkCls}>{t("nav.orders")}</NavLink>
+              {isAdmin && <NavLink to="/admin" className={linkCls}>{t("nav.admin")}</NavLink>}
               <span className="text-sm text-primary font-medium">{t("auth.welcome")}, {user.name.split(" ")[0]}</span>
               <Button variant="outline" size="sm" onClick={() => { logout(); navigate("/"); }} className="border-primary/40 hover:bg-primary hover:text-primary-foreground">
                 {t("nav.logout")}
@@ -89,6 +91,8 @@ const Navbar = () => {
             <NavLink to="/cart" onClick={() => setOpen(false)} className={linkCls}>{t("nav.cart")} {count > 0 && `(${count})`}</NavLink>
             {user ? (
               <>
+                <NavLink to="/orders" onClick={() => setOpen(false)} className={linkCls}>{t("nav.orders")}</NavLink>
+                {isAdmin && <NavLink to="/admin" onClick={() => setOpen(false)} className={linkCls}>{t("nav.admin")}</NavLink>}
                 <span className="text-sm text-primary">{t("auth.welcome")}, {user.name}</span>
                 <button onClick={() => { logout(); setOpen(false); navigate("/"); }} className="text-left text-sm uppercase tracking-wider text-foreground/80">{t("nav.logout")}</button>
               </>

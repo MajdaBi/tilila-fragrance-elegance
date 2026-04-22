@@ -37,6 +37,26 @@ export const StockProvider = ({ children }: { children: ReactNode }) => {
     localStorage.setItem(KEY, JSON.stringify(stock));
   }, [stock]);
 
+  // Listen for external stock updates (e.g. admin dashboard editing localStorage directly)
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const sync = () => {
+      try {
+        const saved = localStorage.getItem(KEY);
+        if (!saved) return;
+        const parsed: StockMap = JSON.parse(saved);
+        setStock((prev) => {
+          // shallow compare
+          const keys = new Set([...Object.keys(prev), ...Object.keys(parsed)]);
+          for (const k of keys) if (prev[k] !== parsed[k]) return { ...prev, ...parsed };
+          return prev;
+        });
+      } catch {}
+    };
+    window.addEventListener("storage", sync);
+    return () => window.removeEventListener("storage", sync);
+  }, []);
+
   const getStock = useCallback((id: string) => stock[id] ?? 0, [stock]);
 
   const decrement = useCallback((id: string, qty = 1) => {

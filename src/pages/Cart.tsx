@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useCart } from "@/context/CartContext";
 import { useStock } from "@/context/StockContext";
-import { products } from "@/data/products";
+import { useProducts } from "@/context/ProductsContext";
 import { Button } from "@/components/ui/button";
 import { Trash2, Minus, Plus } from "lucide-react";
 import { toast } from "sonner";
@@ -11,6 +11,7 @@ const Cart = () => {
   const { t } = useTranslation();
   const { items, remove, updateQty } = useCart();
   const { getStock, decrement } = useStock();
+  const { products } = useProducts();
   const navigate = useNavigate();
 
   const lines = items
