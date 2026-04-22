@@ -48,6 +48,14 @@ export const ProductsProvider = ({ children }: { children: ReactNode }) => {
     const id = p.id || `${slugify(p.nameKey || "product")}-${Date.now().toString(36)}`;
     const newP: Product = { ...(p as Product), id };
     setProducts((prev) => [...prev, newP]);
+    // Seed stock for the new product so StockContext picks it up
+    try {
+      const STOCK_KEY = "tilila_stock_v1";
+      const cur = JSON.parse(localStorage.getItem(STOCK_KEY) || "{}");
+      cur[id] = newP.initialStock;
+      localStorage.setItem(STOCK_KEY, JSON.stringify(cur));
+      window.dispatchEvent(new Event("storage"));
+    } catch {}
     return newP;
   }, []);
 
