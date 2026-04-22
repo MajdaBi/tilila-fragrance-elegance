@@ -3,11 +3,12 @@ import { Link } from "react-router-dom";
 import hero from "@/assets/hero-perfume.jpg";
 import { Button } from "@/components/ui/button";
 import ProductCard from "@/components/ProductCard";
-import { products } from "@/data/products";
+import { useProducts } from "@/context/ProductsContext";
 import Reviews from "@/components/Reviews";
 
 const Index = () => {
   const { t } = useTranslation();
+  const { products } = useProducts();
 
   return (
     <>

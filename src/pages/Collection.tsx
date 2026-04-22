@@ -1,9 +1,10 @@
 import { useTranslation } from "react-i18next";
 import ProductCard from "@/components/ProductCard";
-import { products } from "@/data/products";
+import { useProducts } from "@/context/ProductsContext";
 
 const Collection = () => {
   const { t } = useTranslation();
+  const { products } = useProducts();
   return (
     <section className="container py-16 md:py-24">
       <div className="text-center mb-14 animate-fade-in">
