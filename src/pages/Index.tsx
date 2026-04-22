@@ -4,6 +4,7 @@ import hero from "@/assets/hero-perfume.jpg";
 import { Button } from "@/components/ui/button";
 import ProductCard from "@/components/ProductCard";
 import { products } from "@/data/products";
+import Reviews from "@/components/Reviews";
 
 const Index = () => {
   const { t } = useTranslation();
@@ -41,6 +42,9 @@ const Index = () => {
           {products.map((p) => <ProductCard key={p.id} product={p} />)}
         </div>
       </section>
+
+      {/* Reviews */}
+      <Reviews />
     </>
   );
 };
