@@ -3,7 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useCart } from "@/context/CartContext";
 import { useAuth } from "@/context/AuthContext";
-import { products } from "@/data/products";
+import { useOrders } from "@/context/OrdersContext";
+import { useProducts } from "@/context/ProductsContext";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -13,13 +14,15 @@ const Checkout = () => {
   const { t } = useTranslation();
   const { items, clear } = useCart();
   const { user } = useAuth();
+  const { createOrder } = useOrders();
+  const { products } = useProducts();
   const navigate = useNavigate();
   const [form, setForm] = useState({ name: user?.name || "", phone: "", address: "" });
 
-  const total = items.reduce((s, i) => {
-    const p = products.find((pr) => pr.id === i.id);
-    return s + (p ? p.price * i.quantity : 0);
-  }, 0);
+  const lines = items
+    .map((i) => ({ ...i, product: products.find((pr) => pr.id === i.id)! }))
+    .filter((l) => l.product);
+  const total = lines.reduce((s, l) => s + l.product.price * l.quantity, 0);
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -27,9 +30,27 @@ const Checkout = () => {
       toast.error("Please fill all fields");
       return;
     }
-    toast.success(t("checkout.success"));
+    if (!user) { navigate("/login"); return; }
+    if (lines.length === 0) { toast.error(t("cart.empty")); return; }
+
+    const order = createOrder({
+      customerName: form.name,
+      customerEmail: user.email,
+      phone: form.phone,
+      address: form.address,
+      paymentMethod: t("checkout.cod"),
+      items: lines.map((l) => ({
+        id: l.product.id,
+        nameKey: l.product.nameKey,
+        price: l.product.price,
+        quantity: l.quantity,
+        image: l.product.image,
+      })),
+      total,
+    });
+    toast.success(`${t("checkout.success")} · ${order.id}`);
     clear();
-    setTimeout(() => navigate("/"), 1500);
+    setTimeout(() => navigate("/orders"), 1200);
   };
 
   return (
