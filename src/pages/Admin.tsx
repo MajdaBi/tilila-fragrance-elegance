@@ -167,18 +167,20 @@ const Admin = () => {
                     <p className="text-xs text-muted-foreground">
                       {new Date(o.date).toLocaleString()} · {o.items.reduce((s, i) => s + i.quantity, 0)} {t("admin.items")} · {o.total} {t("collection.currency")}
                     </p>
-                    <details className="text-xs">
+                    <details className="text-xs" open>
                       <summary className="cursor-pointer text-primary hover:underline">{t("admin.viewDetails")}</summary>
                       <div className="mt-2 space-y-1 text-foreground/80 pl-3 border-l border-border">
                         {o.items.map((i) => (
-                          <p key={i.id}>{t(i.nameKey)} × {i.quantity}</p>
+                          <p key={i.id}>{t(i.nameKey)} × {i.quantity} — {i.price * i.quantity} {t("collection.currency")}</p>
                         ))}
-                        <p className="text-muted-foreground">{o.address} · {o.phone}</p>
+                        <p className="text-muted-foreground pt-1">📍 {o.address}</p>
+                        <p className="text-muted-foreground">📞 {o.phone}</p>
+                        <p className="text-muted-foreground">💳 {o.paymentMethod}</p>
                       </div>
                     </details>
                   </div>
-                  <div className="w-full md:w-48">
-                    <Select value={o.status} onValueChange={(v) => updateStatus(o.id, v as OrderStatus)}>
+                  <div className="w-full md:w-56 space-y-2">
+                    <Select value={o.status} onValueChange={(v) => { updateStatus(o.id, v as OrderStatus); toast.success(t("admin.statusUpdated")); }}>
                       <SelectTrigger className="bg-secondary border-border">
                         <SelectValue />
                       </SelectTrigger>
@@ -188,6 +190,33 @@ const Admin = () => {
                         ))}
                       </SelectContent>
                     </Select>
+                    <div className="grid grid-cols-2 gap-2">
+                      <Button
+                        size="sm"
+                        variant="luxe"
+                        disabled={o.status === "confirmed"}
+                        onClick={() => { updateStatus(o.id, "confirmed"); toast.success(t("admin.orderConfirmed")); }}
+                      >
+                        {t("admin.confirmOrder")}
+                      </Button>
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        disabled={o.status === "cancelled"}
+                        onClick={() => { updateStatus(o.id, "cancelled"); toast.success(t("admin.orderCancelled")); }}
+                        className="border-destructive/50 text-destructive hover:bg-destructive hover:text-destructive-foreground"
+                      >
+                        {t("admin.cancelOrder")}
+                      </Button>
+                    </div>
+                    <Button
+                      size="sm"
+                      variant="ghost"
+                      onClick={() => { if (confirm(t("admin.confirmDeleteOrder"))) { deleteOrder(o.id); toast.success(t("admin.orderDeleted")); } }}
+                      className="w-full text-destructive hover:bg-destructive/10"
+                    >
+                      <Trash2 className="w-4 h-4" /> {t("admin.deleteOrder")}
+                    </Button>
                   </div>
                 </div>
               ))}
