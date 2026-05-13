@@ -18,11 +18,25 @@ const Checkout = () => {
   const { products } = useProducts();
   const navigate = useNavigate();
   const [form, setForm] = useState({ name: user?.name || "", phone: "", address: "" });
+  const [promoInput, setPromoInput] = useState("");
+  const [promoApplied, setPromoApplied] = useState(false);
 
   const lines = items
     .map((i) => ({ ...i, product: products.find((pr) => pr.id === i.id)! }))
     .filter((l) => l.product);
-  const total = lines.reduce((s, l) => s + l.product.price * l.quantity, 0);
+  const subtotal = lines.reduce((s, l) => s + l.product.price * l.quantity, 0);
+  const discount = promoApplied ? Math.round(subtotal * 0.1) : 0;
+  const total = subtotal - discount;
+
+  const applyPromo = () => {
+    if (promoInput.trim().toUpperCase() === "TILILA10") {
+      setPromoApplied(true);
+      toast.success(t("checkout.promoApplied"));
+    } else {
+      setPromoApplied(false);
+      toast.error(t("checkout.promoInvalid"));
+    }
+  };
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
