@@ -89,6 +89,14 @@ const resources = {
         cod: "Cash on Delivery",
         place: "Place Order",
         success: "Order placed successfully!",
+        promo: "Promo Code",
+        promoPlaceholder: "Enter promo code",
+        apply: "Apply",
+        promoApplied: "Promo code applied! 10% off",
+        promoInvalid: "Invalid promo code",
+        subtotal: "Subtotal",
+        discount: "Discount",
+        finalTotal: "Final Total",
       },
       auth: {
         loginTitle: "Welcome Back",
@@ -200,7 +208,7 @@ const resources = {
         subtitle: "Histoires authentiques de notre communauté Tilila",
       },
       cart: { title: "Votre Panier", empty: "Votre panier est vide", total: "Total", checkout: "Passer à la Caisse", remove: "Retirer", quantity: "Qté", continue: "Continuer vos Achats" },
-      checkout: { title: "Commande", fullName: "Nom Complet", phone: "Téléphone", address: "Adresse", payment: "Méthode de Paiement", cod: "Paiement à la Livraison", place: "Confirmer la Commande", success: "Commande passée avec succès !" },
+      checkout: { title: "Commande", fullName: "Nom Complet", phone: "Téléphone", address: "Adresse", payment: "Méthode de Paiement", cod: "Paiement à la Livraison", place: "Confirmer la Commande", success: "Commande passée avec succès !", promo: "Code Promo", promoPlaceholder: "Entrez le code promo", apply: "Appliquer", promoApplied: "Code promo appliqué ! -10%", promoInvalid: "Code promo invalide", subtotal: "Sous-total", discount: "Remise", finalTotal: "Total Final" },
       auth: { loginTitle: "Bon Retour", loginSubtitle: "Connectez-vous à votre compte", signupTitle: "Créer un Compte", signupSubtitle: "Rejoignez la famille Tilila", email: "Email", password: "Mot de passe", fullName: "Nom Complet", login: "Connexion", signup: "S'inscrire", noAccount: "Pas de compte ?", haveAccount: "Déjà un compte ?", loginRequired: "Veuillez vous connecter pour continuer", welcome: "Bienvenue" },
       orders: {
         myTitle: "Mes Commandes",
@@ -297,7 +305,7 @@ const resources = {
         subtitle: "قصص حقيقية من مجتمع تليلة",
       },
       cart: { title: "سلتك", empty: "سلتك فارغة", total: "المجموع", checkout: "إتمام الطلب", remove: "إزالة", quantity: "الكمية", continue: "متابعة التسوق" },
-      checkout: { title: "إتمام الشراء", fullName: "الاسم الكامل", phone: "رقم الهاتف", address: "العنوان", payment: "طريقة الدفع", cod: "الدفع عند الاستلام", place: "تأكيد الطلب", success: "تم تقديم الطلب بنجاح!" },
+      checkout: { title: "إتمام الشراء", fullName: "الاسم الكامل", phone: "رقم الهاتف", address: "العنوان", payment: "طريقة الدفع", cod: "الدفع عند الاستلام", place: "تأكيد الطلب", success: "تم تقديم الطلب بنجاح!", promo: "كود الخصم", promoPlaceholder: "أدخل كود الخصم", apply: "تطبيق", promoApplied: "تم تطبيق كود الخصم! خصم 10٪", promoInvalid: "كود الخصم غير صالح", subtotal: "المجموع الفرعي", discount: "الخصم", finalTotal: "المجموع النهائي" },
       auth: { loginTitle: "مرحبا بعودتك", loginSubtitle: "سجل الدخول إلى حسابك", signupTitle: "إنشاء حساب", signupSubtitle: "انضم إلى عائلة تليلة", email: "البريد الإلكتروني", password: "كلمة المرور", fullName: "الاسم الكامل", login: "دخول", signup: "تسجيل", noAccount: "ليس لديك حساب؟", haveAccount: "لديك حساب بالفعل؟", loginRequired: "يرجى تسجيل الدخول للمتابعة", welcome: "مرحبا" },
       orders: {
         myTitle: "طلباتي",

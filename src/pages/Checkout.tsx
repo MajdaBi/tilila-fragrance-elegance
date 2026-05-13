@@ -18,11 +18,25 @@ const Checkout = () => {
   const { products } = useProducts();
   const navigate = useNavigate();
   const [form, setForm] = useState({ name: user?.name || "", phone: "", address: "" });
+  const [promoInput, setPromoInput] = useState("");
+  const [promoApplied, setPromoApplied] = useState(false);
 
   const lines = items
     .map((i) => ({ ...i, product: products.find((pr) => pr.id === i.id)! }))
     .filter((l) => l.product);
-  const total = lines.reduce((s, l) => s + l.product.price * l.quantity, 0);
+  const subtotal = lines.reduce((s, l) => s + l.product.price * l.quantity, 0);
+  const discount = promoApplied ? Math.round(subtotal * 0.1) : 0;
+  const total = subtotal - discount;
+
+  const applyPromo = () => {
+    if (promoInput.trim().toUpperCase() === "TILILA10") {
+      setPromoApplied(true);
+      toast.success(t("checkout.promoApplied"));
+    } else {
+      setPromoApplied(false);
+      toast.error(t("checkout.promoInvalid"));
+    }
+  };
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -75,10 +89,39 @@ const Checkout = () => {
           <div className="mt-2 p-4 border border-primary/40 bg-secondary/40 text-primary">{t("checkout.cod")}</div>
         </div>
 
+        <div>
+          <Label htmlFor="promo">{t("checkout.promo")}</Label>
+          <div className="mt-2 flex gap-2">
+            <Input
+              id="promo"
+              value={promoInput}
+              onChange={(e) => setPromoInput(e.target.value)}
+              placeholder={t("checkout.promoPlaceholder")}
+              maxLength={20}
+            />
+            <Button type="button" variant="luxeOutline" onClick={applyPromo}>{t("checkout.apply")}</Button>
+          </div>
+          {promoApplied && (
+            <p className="text-xs text-primary mt-2 tracking-wider uppercase animate-fade-in">✓ TILILA10 — {t("checkout.promoApplied")}</p>
+          )}
+        </div>
+
         <div className="h-px bg-border my-2" />
-        <div className="flex justify-between items-center">
-          <span className="text-muted-foreground">{t("cart.total")}</span>
-          <span className="font-serif text-3xl text-gold">{total} {t("collection.currency")}</span>
+        <div className="space-y-2">
+          <div className="flex justify-between text-sm">
+            <span className="text-muted-foreground">{t("checkout.subtotal")}</span>
+            <span className="text-foreground/90">{subtotal} {t("collection.currency")}</span>
+          </div>
+          {promoApplied && (
+            <div className="flex justify-between text-sm animate-fade-in">
+              <span className="text-muted-foreground">{t("checkout.discount")} (10%)</span>
+              <span className="text-primary">− {discount} {t("collection.currency")}</span>
+            </div>
+          )}
+          <div className="flex justify-between items-center pt-2 border-t border-border/50">
+            <span className="text-muted-foreground tracking-wider uppercase text-xs">{t("checkout.finalTotal")}</span>
+            <span className="font-serif text-3xl text-gold">{total} {t("collection.currency")}</span>
+          </div>
         </div>
 
         <Button type="submit" variant="luxe" size="lg" className="w-full">{t("checkout.place")}</Button>
