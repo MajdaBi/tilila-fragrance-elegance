@@ -23,7 +23,7 @@ import {
 } from "@/components/ui/dialog";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import OrderStatusBadge from "@/components/OrderStatusBadge";
-import { ShoppingBag, Package, AlertTriangle, Users, Trash2, Plus } from "lucide-react";
+import { ShoppingBag, Package, AlertTriangle, Users, Trash2, Plus, Clock, CheckCircle2 } from "lucide-react";
 import { toast } from "sonner";
 import placeholder from "@/assets/perfume-1.jpg";
 
@@ -134,8 +134,10 @@ const Admin = () => {
       </div>
 
       {/* Stats */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
+      <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 mb-10">
         <StatCard icon={<ShoppingBag className="w-5 h-5" />} label={t("admin.stats.totalOrders")} value={orders.length} />
+        <StatCard icon={<Clock className="w-5 h-5" />} label={t("admin.stats.pending")} value={orders.filter(o => o.status === "pending").length} accent={orders.some(o => o.status === "pending")} />
+        <StatCard icon={<CheckCircle2 className="w-5 h-5" />} label={t("admin.stats.confirmed")} value={orders.filter(o => o.status === "confirmed").length} />
         <StatCard icon={<Package className="w-5 h-5" />} label={t("admin.stats.totalProducts")} value={products.length} />
         <StatCard icon={<AlertTriangle className="w-5 h-5" />} label={t("admin.stats.lowStock")} value={lowStockCount} accent={lowStockCount > 0} />
         <StatCard icon={<Users className="w-5 h-5" />} label={t("admin.stats.customers")} value={totalCustomers} />
