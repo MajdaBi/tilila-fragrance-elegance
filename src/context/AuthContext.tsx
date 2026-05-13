@@ -13,7 +13,7 @@ const AuthContext = createContext<AuthCtx | null>(null);
 const USERS_KEY = "tilila_users";
 const SESSION_KEY = "tilila_session";
 
-const ADMIN_EMAIL = "admin@tilila.ma";
+const ADMIN_EMAIL = "oubouknimajdaa@gmail.com";
 const ADMIN_PASSWORD = "admin123";
 const ADMIN_NAME = "Tilila Admin";
 

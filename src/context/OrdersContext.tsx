@@ -37,6 +37,7 @@ interface OrdersCtx {
   myOrders: (email: string) => Order[];
   createOrder: (data: Omit<Order, "id" | "date" | "status">) => Order;
   updateStatus: (id: string, status: OrderStatus) => void;
+  deleteOrder: (id: string) => void;
 }
 
 const OrdersContext = createContext<OrdersCtx | null>(null);
@@ -79,13 +80,17 @@ export const OrdersProvider = ({ children }: { children: ReactNode }) => {
     setOrders((prev) => prev.map((o) => (o.id === id ? { ...o, status } : o)));
   }, []);
 
+  const deleteOrder = useCallback((id: string) => {
+    setOrders((prev) => prev.filter((o) => o.id !== id));
+  }, []);
+
   const myOrders = useCallback(
     (email: string) => orders.filter((o) => o.customerEmail.toLowerCase() === email.toLowerCase()),
     [orders],
   );
 
   return (
-    <OrdersContext.Provider value={{ orders, myOrders, createOrder, updateStatus }}>
+    <OrdersContext.Provider value={{ orders, myOrders, createOrder, updateStatus, deleteOrder }}>
       {children}
     </OrdersContext.Provider>
   );
