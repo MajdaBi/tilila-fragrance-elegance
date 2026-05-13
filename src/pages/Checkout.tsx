@@ -90,7 +90,7 @@ const Checkout = () => {
       window.open(`https://wa.me/${ADMIN_WA}?text=${msg}`, "_blank", "noopener,noreferrer");
     }
 
-    toast.success(`${t("checkout.success")} · ${order.id}`);
+    toast.success(viaWhatsApp ? t("checkout.whatsappSuccess") : `${t("checkout.success")} · ${order.id}`);
     clear();
     setTimeout(() => navigate("/orders"), 1200);
   };
