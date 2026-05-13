@@ -31,7 +31,7 @@ const USERS_KEY = "tilila_users";
 
 const Admin = () => {
   const { t } = useTranslation();
-  const { orders, updateStatus } = useOrders();
+  const { orders, updateStatus, deleteOrder } = useOrders();
   const { products, addProduct, updateProduct, deleteProduct } = useProducts();
   const { stock, getStock } = useStock();
 
