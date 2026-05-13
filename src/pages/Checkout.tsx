@@ -38,8 +38,30 @@ const Checkout = () => {
     }
   };
 
-  const submit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const ADMIN_WA = "212768103555";
+
+  const buildWhatsAppMessage = (orderId: string) => {
+    const itemsText = lines
+      .map((l) => `• ${t(l.product.nameKey)} × ${l.quantity} — ${l.product.price * l.quantity} ${t("collection.currency")}`)
+      .join("\n");
+    return [
+      `🌸 *Tilila Fragrance — New Order*`,
+      `📦 *Order:* ${orderId}`,
+      ``,
+      `👤 *Name:* ${form.name}`,
+      `📞 *Phone:* ${form.phone}`,
+      `📍 *Address:* ${form.address}`,
+      ``,
+      `🛍️ *Products:*`,
+      itemsText,
+      ``,
+      `💰 *Total:* ${total} ${t("collection.currency")}`,
+      `💳 *Payment:* ${t("checkout.cod")}`,
+      `🟡 *Status:* ${t("orders.status.pending")}`,
+    ].join("\n");
+  };
+
+  const placeOrder = (viaWhatsApp: boolean) => {
     if (!form.name.trim() || !form.phone.trim() || !form.address.trim()) {
       toast.error("Please fill all fields");
       return;
@@ -62,9 +84,20 @@ const Checkout = () => {
       })),
       total,
     });
+
+    if (viaWhatsApp) {
+      const msg = encodeURIComponent(buildWhatsAppMessage(order.id));
+      window.open(`https://wa.me/${ADMIN_WA}?text=${msg}`, "_blank", "noopener,noreferrer");
+    }
+
     toast.success(`${t("checkout.success")} · ${order.id}`);
     clear();
     setTimeout(() => navigate("/orders"), 1200);
+  };
+
+  const submit = (e: React.FormEvent) => {
+    e.preventDefault();
+    placeOrder(false);
   };
 
   return (
@@ -124,7 +157,15 @@ const Checkout = () => {
           </div>
         </div>
 
-        <Button type="submit" variant="luxe" size="lg" className="w-full">{t("checkout.place")}</Button>
+        <Button
+          type="button"
+          size="lg"
+          className="w-full bg-[#25D366] hover:bg-[#25D366]/90 text-white tracking-widest uppercase font-medium transition-luxe hover:shadow-gold"
+          onClick={() => placeOrder(true)}
+        >
+          {t("checkout.whatsappConfirm")}
+        </Button>
+        <Button type="submit" variant="luxeOutline" size="lg" className="w-full">{t("checkout.place")}</Button>
       </form>
     </section>
   );
