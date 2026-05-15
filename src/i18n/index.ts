@@ -79,6 +79,8 @@ const resources = {
         remove: "Remove",
         quantity: "Qty",
         continue: "Continue Shopping",
+        addedDesc: "Added to your cart",
+        removed: "Removed from your cart",
       },
       checkout: {
         title: "Checkout",
