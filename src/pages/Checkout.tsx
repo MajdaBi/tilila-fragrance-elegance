@@ -95,7 +95,10 @@ const Checkout = () => {
       }
     }
 
-    toast.success(viaWhatsApp ? t("checkout.whatsappSuccess") : `${t("checkout.success")} · ${order.id}`);
+    toast.success(viaWhatsApp ? t("checkout.whatsappSuccess") : t("checkout.success"), {
+      description: `${t("orders.id")}: ${order.id}`,
+      duration: 4500,
+    });
     clear();
     setTimeout(() => navigate("/orders"), 1200);
   };
