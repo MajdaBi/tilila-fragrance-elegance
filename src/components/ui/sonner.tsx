@@ -13,10 +13,13 @@ const Toaster = ({ ...props }: ToasterProps) => {
       toastOptions={{
         classNames: {
           toast:
-            "group toast group-[.toaster]:bg-background group-[.toaster]:text-foreground group-[.toaster]:border-border group-[.toaster]:shadow-lg",
-          description: "group-[.toast]:text-muted-foreground",
+            "group toast group-[.toaster]:bg-card/95 group-[.toaster]:backdrop-blur-md group-[.toaster]:text-foreground group-[.toaster]:border group-[.toaster]:border-primary/40 group-[.toaster]:shadow-gold group-[.toaster]:rounded-none group-[.toaster]:font-serif group-[.toaster]:tracking-wide",
+          title: "group-[.toast]:text-gold group-[.toast]:font-serif",
+          description: "group-[.toast]:text-muted-foreground group-[.toast]:font-sans group-[.toast]:text-xs group-[.toast]:tracking-wider",
           actionButton: "group-[.toast]:bg-primary group-[.toast]:text-primary-foreground",
           cancelButton: "group-[.toast]:bg-muted group-[.toast]:text-muted-foreground",
+          success: "group-[.toaster]:border-primary/60 group-[.toaster]:[&_svg]:text-primary",
+          error: "group-[.toaster]:border-destructive/60 group-[.toaster]:[&_svg]:text-destructive",
         },
       }}
       {...props}

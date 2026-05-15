@@ -37,7 +37,7 @@ const ProductDetails = () => {
       return;
     }
     add(product.id);
-    toast.success(`${t(product.nameKey)} ✦`);
+    toast.success(`✦ ${t(product.nameKey)}`, { description: t("cart.addedDesc") });
   };
 
   const wa = `https://wa.me/212600000000?text=${encodeURIComponent(`Hello Tilila, I'd like to order: ${t(product.nameKey)} (${product.price} DH)`)}`;

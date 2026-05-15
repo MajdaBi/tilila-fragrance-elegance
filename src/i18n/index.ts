@@ -79,6 +79,8 @@ const resources = {
         remove: "Remove",
         quantity: "Qty",
         continue: "Continue Shopping",
+        addedDesc: "Added to your cart",
+        removed: "Removed from your cart",
       },
       checkout: {
         title: "Checkout",
@@ -114,6 +116,7 @@ const resources = {
         haveAccount: "Already have an account?",
         loginRequired: "Please login to continue",
         welcome: "Welcome",
+        welcomeBack: "Glad to see you again at Tilila",
       },
       orders: {
         myTitle: "My Orders",
@@ -217,9 +220,9 @@ const resources = {
         title: "Adoré par les Marocaines",
         subtitle: "Histoires authentiques de notre communauté Tilila",
       },
-      cart: { title: "Votre Panier", empty: "Votre panier est vide", total: "Total", checkout: "Passer à la Caisse", remove: "Retirer", quantity: "Qté", continue: "Continuer vos Achats" },
+      cart: { title: "Votre Panier", empty: "Votre panier est vide", total: "Total", checkout: "Passer à la Caisse", remove: "Retirer", quantity: "Qté", continue: "Continuer vos Achats", addedDesc: "Ajouté à votre panier", removed: "Retiré de votre panier" },
       checkout: { title: "Commande", fullName: "Nom Complet", phone: "Téléphone", address: "Adresse", payment: "Méthode de Paiement", cod: "Paiement à la Livraison", place: "Confirmer la Commande", success: "Commande passée avec succès !", promo: "Code Promo", promoPlaceholder: "Entrez le code promo", apply: "Appliquer", promoApplied: "Code promo appliqué ! -10%", promoInvalid: "Code promo invalide", subtotal: "Sous-total", discount: "Remise", finalTotal: "Total Final", whatsappConfirm: "Envoyer la commande à l'admin sur WhatsApp", whatsappSuccess: "Votre commande est prête. Veuillez l'envoyer sur WhatsApp pour confirmer." },
-      auth: { loginTitle: "Bon Retour", loginSubtitle: "Connectez-vous à votre compte", signupTitle: "Créer un Compte", signupSubtitle: "Rejoignez la famille Tilila", email: "Email", password: "Mot de passe", fullName: "Nom Complet", login: "Connexion", signup: "S'inscrire", noAccount: "Pas de compte ?", haveAccount: "Déjà un compte ?", loginRequired: "Veuillez vous connecter pour continuer", welcome: "Bienvenue" },
+      auth: { loginTitle: "Bon Retour", loginSubtitle: "Connectez-vous à votre compte", signupTitle: "Créer un Compte", signupSubtitle: "Rejoignez la famille Tilila", email: "Email", password: "Mot de passe", fullName: "Nom Complet", login: "Connexion", signup: "S'inscrire", noAccount: "Pas de compte ?", haveAccount: "Déjà un compte ?", loginRequired: "Veuillez vous connecter pour continuer", welcome: "Bienvenue", welcomeBack: "Heureux de vous revoir chez Tilila" },
       orders: {
         myTitle: "Mes Commandes",
         mySubtitle: "Suivez toutes vos commandes Tilila en un seul endroit",
@@ -322,9 +325,9 @@ const resources = {
         title: "محبوب لدى المرأة المغربية",
         subtitle: "قصص حقيقية من مجتمع تليلة",
       },
-      cart: { title: "سلتك", empty: "سلتك فارغة", total: "المجموع", checkout: "إتمام الطلب", remove: "إزالة", quantity: "الكمية", continue: "متابعة التسوق" },
+      cart: { title: "سلتك", empty: "سلتك فارغة", total: "المجموع", checkout: "إتمام الطلب", remove: "إزالة", quantity: "الكمية", continue: "متابعة التسوق", addedDesc: "تمت الإضافة إلى السلة", removed: "تمت الإزالة من السلة" },
       checkout: { title: "إتمام الشراء", fullName: "الاسم الكامل", phone: "رقم الهاتف", address: "العنوان", payment: "طريقة الدفع", cod: "الدفع عند الاستلام", place: "تأكيد الطلب", success: "تم تقديم الطلب بنجاح!", promo: "كود الخصم", promoPlaceholder: "أدخل كود الخصم", apply: "تطبيق", promoApplied: "تم تطبيق كود الخصم! خصم 10٪", promoInvalid: "كود الخصم غير صالح", subtotal: "المجموع الفرعي", discount: "الخصم", finalTotal: "المجموع النهائي", whatsappConfirm: "إرسال الطلب إلى الإدارة عبر واتساب", whatsappSuccess: "تم تجهيز طلبك. يرجى إرساله عبر واتساب للتأكيد." },
-      auth: { loginTitle: "مرحبا بعودتك", loginSubtitle: "سجل الدخول إلى حسابك", signupTitle: "إنشاء حساب", signupSubtitle: "انضم إلى عائلة تليلة", email: "البريد الإلكتروني", password: "كلمة المرور", fullName: "الاسم الكامل", login: "دخول", signup: "تسجيل", noAccount: "ليس لديك حساب؟", haveAccount: "لديك حساب بالفعل؟", loginRequired: "يرجى تسجيل الدخول للمتابعة", welcome: "مرحبا" },
+      auth: { loginTitle: "مرحبا بعودتك", loginSubtitle: "سجل الدخول إلى حسابك", signupTitle: "إنشاء حساب", signupSubtitle: "انضم إلى عائلة تليلة", email: "البريد الإلكتروني", password: "كلمة المرور", fullName: "الاسم الكامل", login: "دخول", signup: "تسجيل", noAccount: "ليس لديك حساب؟", haveAccount: "لديك حساب بالفعل؟", loginRequired: "يرجى تسجيل الدخول للمتابعة", welcome: "مرحبا", welcomeBack: "سعداء بعودتك إلى تليلة" },
       orders: {
         myTitle: "طلباتي",
         mySubtitle: "تتبع جميع طلبات تليلة في مكان واحد",
