@@ -37,7 +37,10 @@ const Cart = () => {
     updateQty(id, current - 1);
   };
 
-  const handleRemove = (id: string) => remove(id);
+  const handleRemove = (id: string) => {
+    remove(id);
+    toast.success(t("cart.removed"));
+  };
 
   return (
     <section className="container py-16 md:py-20 animate-fade-in">
