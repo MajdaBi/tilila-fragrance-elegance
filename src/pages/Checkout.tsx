@@ -86,8 +86,13 @@ const Checkout = () => {
     });
 
     if (viaWhatsApp) {
-      const msg = encodeURIComponent(buildWhatsAppMessage(order.id));
-      window.open(`https://wa.me/${ADMIN_WA}?text=${msg}`, "_blank", "noopener,noreferrer");
+      const orderMessage = buildWhatsAppMessage(order.id);
+      const waUrl = `https://wa.me/${ADMIN_WA}?text=${encodeURIComponent(orderMessage)}`;
+      const win = window.open(waUrl, "_blank");
+      if (!win) {
+        // Fallback if popup blocked or running inside an iframe sandbox
+        window.top ? (window.top.location.href = waUrl) : (window.location.href = waUrl);
+      }
     }
 
     toast.success(viaWhatsApp ? t("checkout.whatsappSuccess") : `${t("checkout.success")} · ${order.id}`);
