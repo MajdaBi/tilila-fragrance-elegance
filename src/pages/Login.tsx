@@ -18,7 +18,7 @@ const Login = () => {
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
     if (login(form.email, form.password)) {
-      toast.success(`${t("auth.welcome")} ✦`);
+      toast.success(`${t("auth.welcome")} ✦`, { description: t("auth.welcomeBack") });
       navigate(from, { replace: true });
     } else {
       toast.error("Invalid credentials");
