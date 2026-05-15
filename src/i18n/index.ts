@@ -325,7 +325,7 @@ const resources = {
         title: "محبوب لدى المرأة المغربية",
         subtitle: "قصص حقيقية من مجتمع تليلة",
       },
-      cart: { title: "سلتك", empty: "سلتك فارغة", total: "المجموع", checkout: "إتمام الطلب", remove: "إزالة", quantity: "الكمية", continue: "متابعة التسوق" },
+      cart: { title: "سلتك", empty: "سلتك فارغة", total: "المجموع", checkout: "إتمام الطلب", remove: "إزالة", quantity: "الكمية", continue: "متابعة التسوق", addedDesc: "تمت الإضافة إلى السلة", removed: "تمت الإزالة من السلة" },
       checkout: { title: "إتمام الشراء", fullName: "الاسم الكامل", phone: "رقم الهاتف", address: "العنوان", payment: "طريقة الدفع", cod: "الدفع عند الاستلام", place: "تأكيد الطلب", success: "تم تقديم الطلب بنجاح!", promo: "كود الخصم", promoPlaceholder: "أدخل كود الخصم", apply: "تطبيق", promoApplied: "تم تطبيق كود الخصم! خصم 10٪", promoInvalid: "كود الخصم غير صالح", subtotal: "المجموع الفرعي", discount: "الخصم", finalTotal: "المجموع النهائي", whatsappConfirm: "إرسال الطلب إلى الإدارة عبر واتساب", whatsappSuccess: "تم تجهيز طلبك. يرجى إرساله عبر واتساب للتأكيد." },
       auth: { loginTitle: "مرحبا بعودتك", loginSubtitle: "سجل الدخول إلى حسابك", signupTitle: "إنشاء حساب", signupSubtitle: "انضم إلى عائلة تليلة", email: "البريد الإلكتروني", password: "كلمة المرور", fullName: "الاسم الكامل", login: "دخول", signup: "تسجيل", noAccount: "ليس لديك حساب؟", haveAccount: "لديك حساب بالفعل؟", loginRequired: "يرجى تسجيل الدخول للمتابعة", welcome: "مرحبا" },
       orders: {
