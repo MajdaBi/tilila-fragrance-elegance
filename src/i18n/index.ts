@@ -116,6 +116,7 @@ const resources = {
         haveAccount: "Already have an account?",
         loginRequired: "Please login to continue",
         welcome: "Welcome",
+        welcomeBack: "Glad to see you again at Tilila",
       },
       orders: {
         myTitle: "My Orders",
