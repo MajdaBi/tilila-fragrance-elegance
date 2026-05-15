@@ -22,12 +22,14 @@ import Signup from "./pages/Signup";
 import MyOrders from "./pages/MyOrders";
 import Admin from "./pages/Admin";
 import NotFound from "./pages/NotFound.tsx";
+import LoadingScreen from "./components/LoadingScreen";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
+      <LoadingScreen />
       <Toaster />
       <Sonner position="top-center" />
       <AuthProvider>
