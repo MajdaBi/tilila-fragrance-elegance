@@ -243,6 +243,11 @@ const resources = {
           desc: "Gousse de vanille dorée enveloppée de chaleur caramélisée.",
           full: "Un gourmand doré : mandarine et amande fondent dans un cœur de vanille crémeuse, sucré par le caramel et adouci par le benjoin pour un confort pur et miellé.",
         },
+        discoveryPack: {
+          name: "Coffret Découverte Tilila",
+          desc: "Découvrez 4 fragrances élégantes dans une collection de luxe.",
+          full: "Un coffret exclusif de 4 fragrances signature Tilila (30ml chacune), présenté dans un emballage cadeau premium avec livraison gratuite — idéal pour explorer l'univers Tilila ou offrir un cadeau d'exception.",
+        },
       },
       reviews: {
         eyebrow: "Témoignages",
