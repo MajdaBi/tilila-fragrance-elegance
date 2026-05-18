@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import ProductCard from "@/components/ProductCard";
 import { useProducts } from "@/context/ProductsContext";
 import Reviews from "@/components/Reviews";
+import FeaturedBundle from "@/components/FeaturedBundle";
 
 const Index = () => {
   const { t } = useTranslation();
