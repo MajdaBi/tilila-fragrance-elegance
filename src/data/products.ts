@@ -28,6 +28,17 @@ export interface Product {
 
 export const products: Product[] = [
   {
+    id: "discovery-pack",
+    nameKey: "products.discoveryPack.name",
+    descKey: "products.discoveryPack.desc",
+    fullDescKey: "products.discoveryPack.full",
+    price: 250,
+    image: pack,
+    category: "Bundle",
+    notes: { top: "Bergamot, Rose, Vanilla", middle: "Jasmine, Musk, Iris", base: "Sandalwood, Amber, Oud" },
+    initialStock: 20,
+  },
+  {
     id: "herrera-50",
     nameKey: "products.herrera.name",
     descKey: "products.herrera.desc",
