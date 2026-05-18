@@ -77,6 +77,11 @@ const resources = {
           desc: "Golden vanilla bean wrapped in caramel warmth.",
           full: "A golden gourmand: mandarin and almond melt into a creamy vanilla bean heart, sweetened by caramel and softened with benzoin for pure, honeyed comfort.",
         },
+        discoveryPack: {
+          name: "Tilila Discovery Pack",
+          desc: "Discover 4 elegant fragrances in one luxury collection.",
+          full: "An exclusive curated set of 4 signature Tilila fragrances (30ml each), presented in premium gift packaging with free delivery — the perfect way to explore the Tilila universe or offer a luxurious gift.",
+        },
       },
       reviews: {
         eyebrow: "Testimonials",
