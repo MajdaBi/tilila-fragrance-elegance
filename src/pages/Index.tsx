@@ -41,9 +41,12 @@ const Index = () => {
           <p className="text-muted-foreground max-w-xl mx-auto">{t("collection.subtitle")}</p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {products.map((p) => <ProductCard key={p.id} product={p} />)}
+          {products.filter((p) => p.id !== "discovery-pack").map((p) => <ProductCard key={p.id} product={p} />)}
         </div>
       </section>
+
+      {/* Featured Bundle */}
+      <FeaturedBundle />
 
       {/* Reviews */}
       <Reviews />
