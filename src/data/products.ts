@@ -4,8 +4,9 @@ import p3 from "@/assets/perfume-3.jpg";
 import p4 from "@/assets/perfume-4.jpg";
 import p5 from "@/assets/perfume-5.jpg";
 import p6 from "@/assets/perfume-6.jpg";
+import pack from "@/assets/discovery-pack.jpg";
 
-export type Category = "Vanilla" | "Musk" | "Floral";
+export type Category = "Vanilla" | "Musk" | "Floral" | "Bundle";
 
 export interface ProductNotes {
   top: string;
@@ -26,6 +27,17 @@ export interface Product {
 }
 
 export const products: Product[] = [
+  {
+    id: "discovery-pack",
+    nameKey: "products.discoveryPack.name",
+    descKey: "products.discoveryPack.desc",
+    fullDescKey: "products.discoveryPack.full",
+    price: 250,
+    image: pack,
+    category: "Bundle",
+    notes: { top: "Bergamot, Rose, Vanilla", middle: "Jasmine, Musk, Iris", base: "Sandalwood, Amber, Oud" },
+    initialStock: 20,
+  },
   {
     id: "herrera-50",
     nameKey: "products.herrera.name",
