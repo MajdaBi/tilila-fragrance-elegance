@@ -5,6 +5,7 @@ import { useOrders } from "@/context/OrdersContext";
 import { Button } from "@/components/ui/button";
 import OrderStatusBadge from "@/components/OrderStatusBadge";
 import OrderProgress from "@/components/OrderProgress";
+import ProductImage from "@/components/ProductImage";
 
 const MyOrders = () => {
   const { t, i18n } = useTranslation();
