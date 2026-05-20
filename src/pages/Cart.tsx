@@ -6,6 +6,7 @@ import { useProducts } from "@/context/ProductsContext";
 import { Button } from "@/components/ui/button";
 import { Trash2, Minus, Plus } from "lucide-react";
 import { toast } from "sonner";
+import ProductImage from "@/components/ProductImage";
 
 const Cart = () => {
   const { t } = useTranslation();
@@ -56,8 +57,8 @@ const Cart = () => {
           <div className="lg:col-span-2 space-y-4">
             {lines.map((l) => (
               <div key={l.id} className="flex items-center gap-4 bg-card border border-border/50 p-4 transition-luxe hover:border-primary/40">
-                <Link to={`/product/${l.id}`} className="shrink-0">
-                  <img src={l.product.image} alt={t(l.product.nameKey)} className="w-24 h-28 object-cover" />
+                <Link to={`/product/${l.id}`} className="shrink-0 overflow-hidden rounded-md group">
+                  <ProductImage src={l.product.image} alt={t(l.product.nameKey)} className="w-24 h-28 transition-luxe duration-500 group-hover:scale-110" />
                 </Link>
                 <div className="flex-1 min-w-0">
                   <h3 className="font-serif text-lg truncate">{t(l.product.nameKey)}</h3>

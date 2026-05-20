@@ -4,6 +4,7 @@ import { Product } from "@/data/products";
 import { Button } from "@/components/ui/button";
 import { useStock } from "@/context/StockContext";
 import StockBadge from "@/components/StockBadge";
+import ProductImage from "@/components/ProductImage";
 
 const ProductCard = ({ product }: { product: Product }) => {
   const { t } = useTranslation();
@@ -12,12 +13,11 @@ const ProductCard = ({ product }: { product: Product }) => {
 
   return (
     <article className="group bg-card border border-border/50 overflow-hidden transition-luxe hover:border-primary/60 hover:shadow-gold animate-fade-in">
-      <Link to={`/product/${product.id}`} className="block overflow-hidden bg-secondary aspect-[4/5] relative">
-        <img
+      <Link to={`/product/${product.id}`} className="block overflow-hidden bg-secondary aspect-[4/5] relative rounded-md">
+        <ProductImage
           src={product.image}
           alt={t(product.nameKey)}
-          loading="lazy"
-          className="w-full h-full object-cover transition-luxe duration-700 group-hover:scale-110"
+          className="w-full h-full transition-luxe duration-700 group-hover:scale-110"
         />
         <span className="absolute top-3 left-3 text-[10px] tracking-[0.25em] uppercase bg-background/80 backdrop-blur border border-primary/40 text-primary px-2.5 py-1">
           {t(`categories.${product.category.toLowerCase()}`)}
