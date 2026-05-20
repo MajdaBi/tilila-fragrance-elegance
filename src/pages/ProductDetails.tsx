@@ -7,6 +7,7 @@ import { useStock, stockStatus } from "@/context/StockContext";
 import StockBadge from "@/components/StockBadge";
 import { ShoppingBag, MessageCircle } from "lucide-react";
 import { toast } from "sonner";
+import ProductImage from "@/components/ProductImage";
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -45,8 +46,8 @@ const ProductDetails = () => {
   return (
     <section className="container py-12 md:py-20 animate-fade-in">
       <div className="grid md:grid-cols-2 gap-10 lg:gap-16 items-start">
-        <div className="bg-card border border-border/50 overflow-hidden aspect-[4/5]">
-          <img src={product.image} alt={t(product.nameKey)} className="w-full h-full object-cover" />
+        <div className="group bg-card border border-border/50 overflow-hidden aspect-[4/5] rounded-md">
+          <ProductImage src={product.image} alt={t(product.nameKey)} className="w-full h-full transition-luxe duration-700 group-hover:scale-105" />
         </div>
         <div className="space-y-6">
           <div className="flex items-center gap-3 flex-wrap">

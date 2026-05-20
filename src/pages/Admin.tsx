@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useOrders, ORDER_STATUSES, OrderStatus } from "@/context/OrdersContext";
 import { useProducts } from "@/context/ProductsContext";
 import { useStock, stockStatus } from "@/context/StockContext";
+import ProductImage from "@/components/ProductImage";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -292,7 +293,7 @@ const Admin = () => {
               const status = stockStatus(s);
               return (
                 <div key={p.id} className="bg-card border border-border/50 p-4 flex flex-wrap items-center gap-4 hover:border-primary/40 transition-luxe">
-                  <img src={p.image} alt={t(p.nameKey)} className="w-16 h-20 object-cover" />
+                  <ProductImage src={p.image} alt={t(p.nameKey)} className="w-16 h-20" />
                   <div className="flex-1 min-w-[180px]">
                     <p className="font-serif">{t(p.nameKey)}</p>
                     <p className="text-xs text-muted-foreground">{t(`categories.${p.category.toLowerCase()}`)} · {p.price} {t("collection.currency")}</p>
