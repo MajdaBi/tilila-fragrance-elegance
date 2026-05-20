@@ -292,7 +292,7 @@ const Admin = () => {
               const status = stockStatus(s);
               return (
                 <div key={p.id} className="bg-card border border-border/50 p-4 flex flex-wrap items-center gap-4 hover:border-primary/40 transition-luxe">
-                  <img src={p.image} alt={t(p.nameKey)} className="w-16 h-20 object-cover" />
+                  <ProductImage src={p.image} alt={t(p.nameKey)} className="w-16 h-20" />
                   <div className="flex-1 min-w-[180px]">
                     <p className="font-serif">{t(p.nameKey)}</p>
                     <p className="text-xs text-muted-foreground">{t(`categories.${p.category.toLowerCase()}`)} · {p.price} {t("collection.currency")}</p>

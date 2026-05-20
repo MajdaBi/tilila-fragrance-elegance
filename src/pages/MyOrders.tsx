@@ -57,7 +57,7 @@ const MyOrders = () => {
               <div className="px-5 pb-5 space-y-3">
                 {o.items.map((it) => (
                   <div key={it.id} className="flex items-center gap-4 bg-secondary/40 border border-border/30 p-3">
-                    <img src={it.image} alt={t(it.nameKey)} className="w-16 h-20 object-cover" />
+                    <ProductImage src={it.image} alt={t(it.nameKey)} className="w-16 h-20" />
                     <div className="flex-1 min-w-0">
                       <p className="font-serif truncate">{t(it.nameKey)}</p>
                       <p className="text-xs text-muted-foreground mt-1">
