@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useOrders, ORDER_STATUSES, OrderStatus } from "@/context/OrdersContext";
 import { useProducts } from "@/context/ProductsContext";
 import { useStock, stockStatus } from "@/context/StockContext";
+import ProductImage from "@/components/ProductImage";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
