@@ -38,7 +38,7 @@ const Checkout = () => {
     }
   };
 
-  const ADMIN_WA = "212768103555";
+  const ADMIN_WA = "212647686734";
 
   const buildWhatsAppMessage = (orderId: string) => {
     const itemsText = lines
