@@ -41,7 +41,7 @@ const ProductDetails = () => {
     toast.success(`✦ ${t(product.nameKey)}`, { description: t("cart.addedDesc") });
   };
 
-  const wa = `https://wa.me/212600000000?text=${encodeURIComponent(`Hello Tilila, I'd like to order: ${t(product.nameKey)} (${product.price} DH)`)}`;
+  const wa = `https://wa.me/212647686734?text=${encodeURIComponent(`Hello Tilila, I'd like to order: ${t(product.nameKey)} (${product.price} DH)`)}`;
 
   return (
     <section className="container py-12 md:py-20 animate-fade-in">
