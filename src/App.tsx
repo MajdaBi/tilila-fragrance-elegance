@@ -21,6 +21,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import MyOrders from "./pages/MyOrders";
 import Admin from "./pages/Admin";
+import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound.tsx";
 import LoadingScreen from "./components/LoadingScreen";
 
@@ -42,6 +43,7 @@ const App = () => (
                     <Route element={<Layout />}>
                       <Route path="/" element={<Index />} />
                       <Route path="/collection" element={<Collection />} />
+                      <Route path="/contact" element={<Contact />} />
                       <Route path="/product/:id" element={<ProductDetails />} />
                       <Route path="/login" element={<Login />} />
                       <Route path="/signup" element={<Signup />} />
