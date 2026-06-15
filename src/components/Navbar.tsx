@@ -38,6 +38,7 @@ const Navbar = () => {
         <nav className="hidden md:flex items-center gap-8">
           <NavLink to="/" className={linkCls} end>{t("nav.home")}</NavLink>
           <NavLink to="/collection" className={linkCls}>{t("nav.collection")}</NavLink>
+          <NavLink to="/contact" className={linkCls}>Contact</NavLink>
           <NavLink to="/cart" className={linkCls}>
             <span className="inline-flex items-center gap-2">
               {t("nav.cart")}
@@ -88,6 +89,7 @@ const Navbar = () => {
           <nav className="container flex flex-col py-6 gap-4">
             <NavLink to="/" onClick={() => setOpen(false)} className={linkCls} end>{t("nav.home")}</NavLink>
             <NavLink to="/collection" onClick={() => setOpen(false)} className={linkCls}>{t("nav.collection")}</NavLink>
+            <NavLink to="/contact" onClick={() => setOpen(false)} className={linkCls}>Contact</NavLink>
             <NavLink to="/cart" onClick={() => setOpen(false)} className={linkCls}>{t("nav.cart")} {count > 0 && `(${count})`}</NavLink>
             {user ? (
               <>
